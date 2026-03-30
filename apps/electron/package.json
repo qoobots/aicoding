@@ -1,0 +1,20 @@
+﻿{
+  "name": "electron-app",
+  "version": "1.0.0",
+  "description": "AI编程平台 - Electron主进程",
+  "main": "dist/main.js",
+  "scripts": {
+    "dev": "tsc && electron .",
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "dependencies": {
+    "@shared/types": "workspace:*",
+    "@shared/utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "electron": "^28.2.0",
+    "typescript": "^5.3.3"
+  }
+}

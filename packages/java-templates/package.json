@@ -1,0 +1,8 @@
+﻿{
+  "name": "@java/templates",
+  "version": "1.0.0",
+  "description": "Java代码模板",
+  "scripts": {
+    "build": "echo 'Templates built'"
+  }
+}

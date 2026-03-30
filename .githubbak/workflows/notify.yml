@@ -1,0 +1,31 @@
+﻿name: Notify
+
+on:
+  workflow_run:
+    workflows: ['CI', 'CD']
+    types: [completed]
+
+jobs:
+  notify:
+    name: Send Notifications
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+
+    steps:
+      - name: Send failure notification
+        run: |
+          echo "Workflow ${{ github.event.workflow_run.name }} failed"
+          # Add your notification logic here
+          # Example: Send Slack notification, Email, etc.
+
+      - name: Comment on PR
+        uses: actions/github-script@v7
+        if: github.event_name == 'pull_request'
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '⚠️ CI/CD workflow failed. Please check the logs for details.'
+            })

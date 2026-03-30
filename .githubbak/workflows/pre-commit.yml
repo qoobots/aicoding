@@ -1,0 +1,52 @@
+﻿name: Pre-commit Checks
+
+on:
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  pre-commit:
+    name: Pre-commit Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run lint-staged on changed files
+        run: |
+          git diff --name-only --diff-filter=ACMRTUXB HEAD~1 | grep -E '\.(ts|tsx|js|jsx|vue)$' || true
+
+      - name: Check commit messages
+        uses: wagoid/commitlint-github-action@v6
+        with:
+          configFile: .commitlintrc.json
+          failOnCommitsWithErrors: true
+
+      - name: Check code coverage
+        run: |
+          pnpm test:coverage || true
+
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage/lcov.info
+          flags: unittests
+          name: codecov-umbrella
+        continue-on-error: true

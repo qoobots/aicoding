@@ -1,0 +1,302 @@
+﻿/* 全局样式重置 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* 主题变量 */
+:root {
+  --primary-color: #0052d9;
+  --success-color: #00a870;
+  --warning-color: #e37318;
+  --error-color: #d54941;
+  --text-primary: #333;
+  --text-secondary: #666;
+  --text-placeholder: #999;
+  --bg-primary: #fff;
+  --bg-secondary: #f3f3f3;
+  --border-color: #e7e7e7;
+}
+
+[theme='dark'] {
+  --primary-color: #3b82f6;
+  --success-color: #22c55e;
+  --warning-color: #f59e0b;
+  --error-color: #ef4444;
+  --text-primary: #e5e5e5;
+  --text-secondary: #a3a3a3;
+  --text-placeholder: #737373;
+  --bg-primary: #1e1e1e;
+  --bg-secondary: #2d2d2d;
+  --border-color: #404040;
+}
+
+/* 通用类 */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.grid {
+  display: grid;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mt-1 {
+  margin-top: 4px;
+}
+
+.mt-2 {
+  margin-top: 8px;
+}
+
+.mt-3 {
+  margin-top: 16px;
+}
+
+.mt-4 {
+  margin-top: 24px;
+}
+
+.mb-1 {
+  margin-bottom: 4px;
+}
+
+.mb-2 {
+  margin-bottom: 8px;
+}
+
+.mb-3 {
+  margin-bottom: 16px;
+}
+
+.mb-4 {
+  margin-bottom: 24px;
+}
+
+.ml-1 {
+  margin-left: 4px;
+}
+
+.ml-2 {
+  margin-left: 8px;
+}
+
+.ml-3 {
+  margin-left: 16px;
+}
+
+.ml-4 {
+  margin-left: 24px;
+}
+
+.mr-1 {
+  margin-right: 4px;
+}
+
+.mr-2 {
+  margin-right: 8px;
+}
+
+.mr-3 {
+  margin-right: 16px;
+}
+
+.mr-4 {
+  margin-right: 24px;
+}
+
+.p-1 {
+  padding: 4px;
+}
+
+.p-2 {
+  padding: 8px;
+}
+
+.p-3 {
+  padding: 16px;
+}
+
+.p-4 {
+  padding: 24px;
+}
+
+/* 动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* TDesign 组件样式优化 */
+.t-layout {
+  background-color: var(--bg-secondary);
+}
+
+.t-header,
+.t-footer,
+.t-aside {
+  background-color: var(--bg-primary);
+}
+
+.t-content {
+  background-color: var(--bg-secondary);
+}
+
+/* 卡片样式优化 */
+.t-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* 表格样式优化 */
+.t-table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* 按钮样式优化 */
+.t-button {
+  border-radius: 4px;
+}
+
+/* 输入框样式优化 */
+.t-input__inner,
+.t-textarea__inner {
+  border-radius: 4px;
+}
+
+/* 标签页样式优化 */
+.t-tabs {
+  background-color: var(--bg-primary);
+}
+
+/* 菜单样式优化 */
+.t-menu {
+  border-radius: 4px;
+}
+
+/* 下拉菜单样式优化 */
+.t-dropdown__menu {
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 弹窗样式优化 */
+.t-dialog {
+  border-radius: 8px;
+}
+
+/* 消息提示样式优化 */
+.t-message {
+  border-radius: 4px;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+  .header-left,
+  .header-right {
+    min-width: auto;
+  }
+
+  .header-center {
+    max-width: none;
+  }
+
+  :deep(.t-menu__item) {
+    padding: 0 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  :deep(.t-menu__item) {
+    padding: 0 12px;
+    font-size: 13px;
+  }
+}
+

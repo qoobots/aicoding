@@ -1,0 +1,89 @@
+﻿name: CD
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    needs: build
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Electron app
+        run: pnpm --filter @aicoding/electron build
+
+      - name: Generate version
+        id: version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: Release v${{ steps.version.outputs.version }}
+          draft: false
+          prerelease: false
+          files: |
+            apps/electron/dist/*.exe
+            apps/electron/dist/*.dmg
+            apps/electron/dist/*.AppImage
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: release
+    environment:
+      name: production
+      url: https://example.com
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download frontend build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: frontend-build
+          path: dist/frontend
+
+      - name: Download backend build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: backend-build
+          path: dist/backend
+
+      - name: Deploy to server
+        run: |
+          echo "Deploying to server..."
+          # Add your deployment script here
+          # Example: rsync -avz dist/ user@server:/path/to/deploy/
