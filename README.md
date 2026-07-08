@@ -186,7 +186,7 @@ aicoding-platform/
 1. **克隆项目**
 
 ```bash
-git clone https://github.com/your-org/aicoding-platform.git
+git clone https://github.com/qoobots/aicoding-platform.git
 cd aicoding-platform
 ```
 
@@ -375,7 +375,7 @@ docker-compose logs -f
 
 如果您发现了 Bug 或有功能建议,请通过以下方式反馈:
 
-- 创建 [Issue](https://github.com/your-org/aicoding-platform/issues)
+- 创建 [Issue](https://github.com/qoobots/aicoding-platform/issues)
 - 描述问题的详细情况
 - 提供复现步骤和环境信息
 - 附上相关的日志或截图
@@ -390,7 +390,7 @@ docker-compose logs -f
 
 ## 🔗 相关链接
 
-- **项目地址**: https://github.com/your-org/aicoding-platform
+- **项目地址**: https://github.com/qoobots/aicoding-platform
 - **文档中心**: [01-docs/](./01-docs/)
 - **问题反馈**: [Issues](https://github.com/your-org/aicoding-platform/issues)
 - **更新日志**: [CHANGELOG.md](CHANGELOG.md)

@@ -452,7 +452,7 @@ npm --version
 2. **克隆项目**:
 
 ```bash
-git clone https://github.com/your-org/ai-coding-platform.git
+git clone https://github.com/qoobots/ai-coding-platform.git
 cd ai-coding-platform
 ```
 
@@ -593,7 +593,7 @@ networks:
 
 ```bash
 # 克隆项目
-git clone https://github.com/your-org/ai-coding-platform.git
+git clone https://github.com/qoobots/ai-coding-platform.git
 cd ai-coding-platform
 
 # 配置环境变量
@@ -1516,7 +1516,7 @@ interface FieldConfig {
 
 ```bash
 # 克隆项目
-git clone https://github.com/your-org/ai-coding-platform.git
+git clone https://github.com/qoobots/ai-coding-platform.git
 cd ai-coding-platform
 
 # 安装依赖
@@ -1712,7 +1712,7 @@ CREATE TABLE generations (
 
 ```bash
 # 1. 克隆项目
-git clone https://github.com/your-org/ai-coding-platform.git
+git clone https://github.com/qoobots/ai-coding-platform.git
 cd ai-coding-platform
 
 # 2. 安装依赖 (使用pnpm)
